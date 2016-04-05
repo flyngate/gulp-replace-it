@@ -1,0 +1,25 @@
+{
+  "name": "gulp-replace-it",
+  "version": "0.0.1",
+  "description": "A gulp plugin for inserting strings, buffers and streams in place of tokens",
+  "main": "./index.js",
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "should": "^8.3.0",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "replace",
+    "insert"
+  ],
+  "author": "Igor Stroganov",
+  "license": "MIT"
+}
