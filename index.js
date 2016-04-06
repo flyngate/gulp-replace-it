@@ -7,7 +7,7 @@ var PLUGIN_NAME = 'gulp-replace-it';
 
 
 function warn(msg) {
-  console.log(PLUGIN_NAME + ' warning: ' + mgs);
+  console.log(PLUGIN_NAME + ' warning: ' + msg);
 }
 
 function objectCache() {
@@ -56,7 +56,8 @@ function matcher(template) {
 }
 
 module.exports = function(opts) {
-  var replaceWith = opts.with;
+  opts = opts || {};
+  var replaceWith = opts.with || {};
   var placeholderTemplate = opts.placeholderTemplate || '{{ _ }}';
   var doMatch = matcher(placeholderTemplate);
 
@@ -77,8 +78,10 @@ module.exports = function(opts) {
           line = line.slice(match.index + match[0].length);
           match = doMatch(line);
         }
-        result.push(line);
+        result.push(line + '\n');
       });
+      var last = result[result.length - 1];
+      result[result.length - 1] = last.slice(0, last.length - 1);
 
       var streamCache = objectCache();
 

@@ -118,4 +118,20 @@ describe('replace({ ... })', function () {
 
     test(stream, '{{ one }} and {{ two }}', 'blah and blah');
   });
+
+  it('should process multiline input', function () {
+    var stream = replace({
+      with: {
+        thing: 'hello'
+      }
+    });
+
+    test(stream, '  {{ thing }}  \n  {{thing}}', '  hello  \n  hello')
+  });
+
+  it('should work as through stream without arguments', function () {
+    var stream = replace();
+
+    test(stream, '\n\n\n\n', '\n\n\n\n');
+  })
 });
